@@ -12,7 +12,8 @@ const applicationState = {
         chosenUser: null,
         displayFavorites: false,
         displayMessages: false
-    }
+    },
+    gifs: {}
 }
 
 // Users Functions
@@ -77,6 +78,9 @@ export const sendPost = (post) => {
     .then(() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
     })
+}
+export const getGifs = () => {
+    return applicationState.gifs.map(gif => ({...gif}))
 }
 
 export const getPosts = () => {
