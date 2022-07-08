@@ -21,18 +21,18 @@ document.addEventListener("click", clickEvent => {
 
 export const LoginForm = () => {
     return `
-        <div class="loginForm">
-            <form>
-                <fieldset>
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" autofocus placeholder="Email address" />
-                </fieldset>
-                <fieldset>
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" placeholder="Password" />
-                </fieldset>
-            </form>
-            <button id="loginButton">Login</button>
-        </div>
+            <div class="loginForm">
+                <form>
+                    <fieldset>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" autofocus placeholder="Email address" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" placeholder="Password" />
+                    </fieldset>
+                </form>
+                <button id="loginButton">Login</button>
+            </div>
     `
 }
