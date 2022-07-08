@@ -3,6 +3,7 @@ const mainContainer = document.querySelector(".giffygram")
 
 
 const applicationState = {
+    messages: [],
     users: [],
     posts: [],
     likes: [],
@@ -110,11 +111,22 @@ export const sendMessage = (message) => {
     }
 
 
-    return fetch(`${apiURL}/messages`, fetchOptions)
+    return fetch(`${API}/messages`, fetchOptions)
     .then(response => response.json())
     .then(() => {
         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
     })
+}
+
+export const fetchMessage = () => {
+    return fetch(`${apiURL}/messages`)
+        .then(response => response.json())
+        .then(
+            (message) => {
+                // Store the external state in application state
+                applicationState.messages = message
+            }
+        )
 }
 
 export const getMessages = () => {
