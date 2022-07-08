@@ -1,9 +1,21 @@
 import { sendGif } from "../data/provider.js";
+let posting = false
+
+const mainContainer = document.querySelector("#container")
+
+// mainContainer.addEventListener("click", clickEvent => {
+//     if (clickEvent.target.id.startsWith("miniMode")) {
+//         posting = true
+//         mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+//     }
+// })
 
 //formHTML for user gif post input data
 export const PostForm = () => {
-    if()
-    return `
+    // if (posting = false) {
+    //     ` <div class= "miniMode" id="miniMode">Have a gif to post?</div> `
+    // } else {
+        return `
         <div class="newPost">
             <form>
                 <fieldset id="title">
@@ -20,11 +32,12 @@ export const PostForm = () => {
             <button id="newPost__cancel">Cancel</button>
         </div>
     `
-}
+    }
+//}
 
-// const mainContainer = document.querySelector("#container")
 
-// //click event will look for click of save btn and save to transient state obj in provider.js
+
+//click event will look for click of save btn and save to transient state obj in provider.js
 // mainContainer.addEventListener("click", clickEvent => {
 //     if (clickEvent.target.id === "saveButton") {
 
@@ -46,3 +59,5 @@ export const PostForm = () => {
 //     }
 //     mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
 // })
+
+
