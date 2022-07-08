@@ -5,6 +5,9 @@ const mainContainer = document.querySelector(".giffygram")
 const applicationState = {
     messages: [],
     users: [],
+    posts: [],
+    likes: [],
+    messages: [],
     currentUser: {},
     feed: {
         chosenUser: null,
@@ -13,6 +16,7 @@ const applicationState = {
     }
 }
 
+// Users Functions
 
 export const fetchUsers = () => {
     return fetch(`${apiURL}/users`)
@@ -46,6 +50,53 @@ export const getUsers = () => {
     return applicationState.users.map(user => ({...user}))
 }
 
+// Posts Functions
+
+export const fetchPosts = () => {
+    return fetch(`${apiURL}/posts`)
+        .then(response => response.json())
+        .then(
+            (posts) => {
+                // Store the external state in application state
+                applicationState.posts = posts
+            }
+        )
+}
+
+export const sendPost = (post) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(post)
+    }
+
+
+    return fetch(`${apiURL}/posts`, fetchOptions)
+    .then(response => response.json())
+    .then(() => {
+        mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
+export const getPosts = () => {
+    return applicationState.users.map(post => ({...post}))
+}
+
+// Messages Functions
+
+export const fetchMessages = () => {
+    return fetch(`${apiURL}/messages`)
+        .then(response => response.json())
+        .then(
+            (messages) => {
+                // Store the external state in application state
+                applicationState.messages = messages
+            }
+        )
+}
+
 export const sendMessage = (message) => {
     const fetchOptions = {
         method: "POST",
@@ -74,16 +125,40 @@ export const fetchMessage = () => {
         )
 }
 
-export const deleteMessage = (id) => {
-    return fetch(`${API}/messages/${id}`, { method: "DELETE" })
-        .then(
-            () => {
-                mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
-            }
-        )
-}
-
 export const getMessages = () => {
     return applicationState.messages.map(message => ({...message}))
 }
 
+// Likes Functions 
+
+export const fetchLikes = () => {
+    return fetch(`${apiURL}/likes`)
+        .then(response => response.json())
+        .then(
+            (likes) => {
+                // Store the external state in application state
+                applicationState.likes = likes
+            }
+        )
+}
+
+export const sendLike = (like) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(like)
+    }
+
+
+    return fetch(`${apiURL}/likes`, fetchOptions)
+    .then(response => response.json())
+    .then(() => {
+        mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+    })
+}
+
+export const getLikes = () => {
+    return applicationState.likes.map(like => ({...like}))
+}
