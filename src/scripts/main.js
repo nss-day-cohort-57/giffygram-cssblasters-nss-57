@@ -16,4 +16,4 @@ export const renderApp = () => {
 }
 
 fetchUsers()
-.then(renderApp())
+    .then(renderApp())
