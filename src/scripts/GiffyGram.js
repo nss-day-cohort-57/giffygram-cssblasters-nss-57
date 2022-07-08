@@ -3,5 +3,6 @@ import { PostForm } from "./feed/PostList.js";
 export const GiffyGram = () => {
 
     // Show main main UI
-    return `${NavHtml()}`
+    return `${NavHtml()}
+            ${PostForm()}`
 }
